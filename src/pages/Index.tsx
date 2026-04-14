@@ -8,13 +8,14 @@ import CardScreen from '@/components/CardScreen';
 import HistoryScreen from '@/components/HistoryScreen';
 import NotificationsScreen from '@/components/NotificationsScreen';
 import SupportScreen from '@/components/SupportScreen';
+import CashbackScreen from '@/components/CashbackScreen';
 
-type Page = 'home' | 'profile' | 'schedule' | 'calculator' | 'card' | 'history' | 'notifications' | 'support';
+type Page = 'home' | 'profile' | 'schedule' | 'calculator' | 'card' | 'history' | 'notifications' | 'support' | 'cashback';
 
 const NAV_TABS: { id: Page; icon: string; label: string }[] = [
   { id: 'home', icon: 'Home', label: 'Главная' },
   { id: 'schedule', icon: 'CalendarDays', label: 'График' },
-  { id: 'calculator', icon: 'Calculator', label: 'Расчёт' },
+  { id: 'cashback', icon: 'Percent', label: 'Кэшбэк' },
   { id: 'card', icon: 'CreditCard', label: 'Карта' },
   { id: 'profile', icon: 'User', label: 'Профиль' },
 ];
@@ -36,6 +37,7 @@ export default function Index() {
       case 'history': return <HistoryScreen />;
       case 'notifications': return <NotificationsScreen />;
       case 'support': return <SupportScreen />;
+      case 'cashback': return <CashbackScreen />;
       default: return <HomeScreen onNavigate={navigate} />;
     }
   };
