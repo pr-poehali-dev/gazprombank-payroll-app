@@ -17,10 +17,10 @@ export default function ProfileScreen() {
         <h1 className="text-white text-xl font-bold mb-6">Профиль</h1>
         <div className="flex items-center gap-4">
           <div className="w-16 h-16 rounded-2xl bg-white/20 border-2 border-white/30 flex items-center justify-center">
-            <span className="text-white text-2xl font-bold">АП</span>
+            <span className="text-white text-2xl font-bold">АА</span>
           </div>
           <div>
-            <p className="text-white text-lg font-bold">Алексей Петров</p>
+            <p className="text-white text-lg font-bold">Артур Авагян</p>
             <p className="text-blue-200 text-sm">Старший менеджер</p>
             <div className="flex items-center gap-1.5 mt-1">
               <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
