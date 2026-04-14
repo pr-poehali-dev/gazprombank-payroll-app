@@ -54,7 +54,7 @@ export default function PinScreen({ onSuccess }: Props) {
           <span className="text-white text-xl font-black tracking-tight">ГПБ</span>
         </div>
         <h1 className="text-xl font-bold text-foreground mb-1">Добро пожаловать</h1>
-        <p className="text-muted-foreground text-sm mb-10">Артур Авагян</p>
+        <p className="text-muted-foreground text-sm mb-10">Артур Арменович</p>
 
         {/* Dots */}
         <div

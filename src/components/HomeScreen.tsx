@@ -25,7 +25,7 @@ export default function HomeScreen({ onNavigate }: Props) {
         <div className="flex items-center justify-between mb-6">
           <div>
             <p className="text-blue-200 text-sm font-medium">Добрый день,</p>
-            <h1 className="text-white text-xl font-bold">Артур Авагян</h1>
+            <h1 className="text-white text-xl font-bold">Артур Арменович</h1>
           </div>
           <button
             onClick={() => onNavigate('notifications')}
