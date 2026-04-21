@@ -1,4 +1,5 @@
 import Icon from '@/components/ui/icon';
+import { useTheme } from '@/context/ThemeContext';
 
 const profileItems = [
   { icon: 'User', label: 'Личные данные', sub: 'ФИО, дата рождения, ИНН' },
@@ -10,6 +11,7 @@ const profileItems = [
 ];
 
 export default function ProfileScreen() {
+  const { isDark, toggleTheme } = useTheme();
   return (
     <div className="flex flex-col min-h-full animate-fade-in">
       {/* Header */}
@@ -32,7 +34,7 @@ export default function ProfileScreen() {
 
       {/* Employment info */}
       <div className="px-5 -mt-4 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow p-4 grid grid-cols-3 gap-3">
+        <div className="bg-card rounded-2xl gpb-card-shadow p-4 grid grid-cols-3 gap-3">
           <div className="text-center">
             <p className="text-lg font-bold text-foreground">4 г.</p>
             <p className="text-xs text-muted-foreground">Стаж</p>
@@ -50,7 +52,7 @@ export default function ProfileScreen() {
 
       {/* Profile sections */}
       <div className="px-5 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow overflow-hidden">
+        <div className="bg-card rounded-2xl gpb-card-shadow overflow-hidden">
           {profileItems.map((item, idx) => (
             <button
               key={item.label}
@@ -71,9 +73,30 @@ export default function ProfileScreen() {
         </div>
       </div>
 
+      {/* Theme toggle */}
+      <div className="px-5 mb-3">
+        <div className="bg-card rounded-2xl gpb-card-shadow p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-gpb-surface flex items-center justify-center">
+              <Icon name={isDark ? 'Moon' : 'Sun'} size={17} className="text-gpb-blue" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-foreground">Тёмная тема</p>
+              <p className="text-xs text-muted-foreground">{isDark ? 'Включена' : 'Выключена'}</p>
+            </div>
+          </div>
+          <button
+            onClick={toggleTheme}
+            className={`w-12 h-6 rounded-full relative transition-colors duration-300 ${isDark ? 'bg-gpb-blue' : 'bg-border'}`}
+          >
+            <span className={`absolute top-0.5 w-5 h-5 rounded-full bg-card shadow transition-transform duration-300 ${isDark ? 'translate-x-6' : 'translate-x-0.5'}`} />
+          </button>
+        </div>
+      </div>
+
       {/* Logout */}
       <div className="px-5 mb-8">
-        <button className="w-full bg-red-50 border border-red-100 text-red-600 rounded-2xl py-3.5 text-sm font-semibold flex items-center justify-center gap-2">
+        <button className="w-full bg-red-500/10 border border-red-200 dark:border-red-900/30 text-red-600 rounded-2xl py-3.5 text-sm font-semibold flex items-center justify-center gap-2">
           <Icon name="LogOut" size={16} />
           Выйти из приложения
         </button>

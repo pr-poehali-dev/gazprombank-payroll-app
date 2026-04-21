@@ -98,7 +98,7 @@ export default function CardScreen() {
 
       {/* Balance */}
       <div className="px-5 -mt-4 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow p-4 flex items-center justify-between">
+        <div className="bg-card rounded-2xl gpb-card-shadow p-4 flex items-center justify-between">
           <div>
             <p className="text-xs text-muted-foreground mb-1">Баланс счёта</p>
             <p className="text-2xl font-bold text-foreground">142 830 <span className="text-lg">₽</span></p>
@@ -112,7 +112,7 @@ export default function CardScreen() {
 
       {/* Tabs */}
       <div className="px-5 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow overflow-hidden">
+        <div className="bg-card rounded-2xl gpb-card-shadow overflow-hidden">
           <div className="flex border-b border-border">
             {tabs.map(tab => (
               <button
@@ -172,7 +172,7 @@ export default function CardScreen() {
                 <div key={svc.label} className="flex items-center justify-between py-2 border-b border-border last:border-0">
                   <span className="text-sm font-medium text-foreground">{svc.label}</span>
                   <div className={`w-12 h-6 rounded-full relative transition-colors ${svc.enabled ? 'bg-gpb-blue' : 'bg-border'}`}>
-                    <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${svc.enabled ? 'translate-x-7' : 'translate-x-1'}`}></div>
+                    <div className={`absolute top-1 w-4 h-4 bg-card rounded-full shadow transition-transform ${svc.enabled ? 'translate-x-7' : 'translate-x-1'}`}></div>
                   </div>
                 </div>
               ))}

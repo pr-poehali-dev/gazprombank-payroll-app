@@ -144,7 +144,7 @@ export default function AiAssistantScreen() {
                 className={`px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-line ${
                   msg.role === 'user'
                     ? 'bg-gpb-blue text-white rounded-tr-sm'
-                    : 'bg-white gpb-card-shadow text-foreground rounded-tl-sm'
+                    : 'bg-card gpb-card-shadow text-foreground rounded-tl-sm'
                 }`}
               >
                 {msg.role === 'assistant' ? renderText(msg.text) : msg.text}
@@ -159,7 +159,7 @@ export default function AiAssistantScreen() {
             <div className="w-8 h-8 rounded-xl bg-gpb-blue flex items-center justify-center flex-shrink-0 mt-1">
               <Icon name="Bot" size={14} className="text-white" fallback="MessageCircle" />
             </div>
-            <div className="bg-white gpb-card-shadow rounded-2xl rounded-tl-sm px-4 py-3.5 flex items-center gap-1">
+            <div className="bg-card gpb-card-shadow rounded-2xl rounded-tl-sm px-4 py-3.5 flex items-center gap-1">
               <span className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
               <span className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
               <span className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
@@ -179,7 +179,7 @@ export default function AiAssistantScreen() {
               <button
                 key={q}
                 onClick={() => sendMessage(q)}
-                className="bg-white border border-border rounded-full px-3 py-1.5 text-xs font-medium text-foreground hover:border-gpb-blue hover:text-gpb-blue transition-colors gpb-card-shadow"
+                className="bg-card border border-border rounded-full px-3 py-1.5 text-xs font-medium text-foreground hover:border-gpb-blue hover:text-gpb-blue transition-colors gpb-card-shadow"
               >
                 {q}
               </button>
@@ -189,7 +189,7 @@ export default function AiAssistantScreen() {
       )}
 
       {/* Input */}
-      <div className="px-4 py-3 bg-white border-t border-border flex-shrink-0">
+      <div className="px-4 py-3 bg-card border-t border-border flex-shrink-0">
         <div className="flex items-center gap-2">
           <input
             ref={inputRef}

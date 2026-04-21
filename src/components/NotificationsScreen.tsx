@@ -95,7 +95,7 @@ export default function NotificationsScreen() {
       {/* All notifications */}
       <div className="px-5 mt-2 mb-6">
         <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Все уведомления</p>
-        <div className="bg-white rounded-2xl gpb-card-shadow overflow-hidden">
+        <div className="bg-card rounded-2xl gpb-card-shadow overflow-hidden">
           {items.map((n, idx) => (
             <button
               key={n.id}

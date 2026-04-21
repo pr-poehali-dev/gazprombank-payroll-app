@@ -43,7 +43,7 @@ export default function CalculatorScreen() {
 
       {/* Input */}
       <div className="px-5 -mt-4 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow p-4">
+        <div className="bg-card rounded-2xl gpb-card-shadow p-4">
           <label className="block text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wider">
             Оклад (до вычета налогов)
           </label>
@@ -86,7 +86,7 @@ export default function CalculatorScreen() {
 
       {/* Deductions toggle */}
       <div className="px-5 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow overflow-hidden">
+        <div className="bg-card rounded-2xl gpb-card-shadow overflow-hidden">
           <div className="px-4 py-3 border-b border-border">
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Вычеты и удержания</p>
           </div>
@@ -106,18 +106,18 @@ export default function CalculatorScreen() {
               onClick={() => setHasChildren(!hasChildren)}
               className={`w-12 h-6 rounded-full transition-colors relative ${hasChildren ? 'bg-gpb-blue' : 'bg-border'}`}
             >
-              <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${hasChildren ? 'translate-x-7' : 'translate-x-1'}`}></div>
+              <div className={`absolute top-1 w-4 h-4 bg-card rounded-full shadow transition-transform ${hasChildren ? 'translate-x-7' : 'translate-x-1'}`}></div>
             </button>
           </div>
           {hasChildren && (
             <div className="px-4 py-3 border-b border-border bg-gpb-surface flex items-center justify-between">
               <span className="text-sm text-foreground">Количество детей</span>
               <div className="flex items-center gap-3">
-                <button onClick={() => setChildrenCount(Math.max(1, childrenCount - 1))} className="w-8 h-8 rounded-full bg-white border border-border flex items-center justify-center">
+                <button onClick={() => setChildrenCount(Math.max(1, childrenCount - 1))} className="w-8 h-8 rounded-full bg-card border border-border flex items-center justify-center">
                   <Icon name="Minus" size={14} />
                 </button>
                 <span className="text-base font-bold w-4 text-center">{childrenCount}</span>
-                <button onClick={() => setChildrenCount(Math.min(5, childrenCount + 1))} className="w-8 h-8 rounded-full bg-white border border-border flex items-center justify-center">
+                <button onClick={() => setChildrenCount(Math.min(5, childrenCount + 1))} className="w-8 h-8 rounded-full bg-card border border-border flex items-center justify-center">
                   <Icon name="Plus" size={14} />
                 </button>
               </div>
@@ -139,7 +139,7 @@ export default function CalculatorScreen() {
               onClick={() => setHasMedInsurance(!hasMedInsurance)}
               className={`w-12 h-6 rounded-full transition-colors relative ${hasMedInsurance ? 'bg-gpb-blue' : 'bg-border'}`}
             >
-              <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow transition-transform ${hasMedInsurance ? 'translate-x-7' : 'translate-x-1'}`}></div>
+              <div className={`absolute top-1 w-4 h-4 bg-card rounded-full shadow transition-transform ${hasMedInsurance ? 'translate-x-7' : 'translate-x-1'}`}></div>
             </button>
           </div>
 
@@ -169,7 +169,7 @@ export default function CalculatorScreen() {
       <div className="px-5 mb-6">
         <button
           onClick={() => setShowBreakdown(!showBreakdown)}
-          className="w-full bg-white rounded-2xl gpb-card-shadow p-4 flex items-center justify-between"
+          className="w-full bg-card rounded-2xl gpb-card-shadow p-4 flex items-center justify-between"
         >
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full bg-gpb-surface flex items-center justify-center">
@@ -183,7 +183,7 @@ export default function CalculatorScreen() {
           <Icon name={showBreakdown ? 'ChevronUp' : 'ChevronDown'} size={16} className="text-muted-foreground" />
         </button>
         {showBreakdown && (
-          <div className="bg-white rounded-b-2xl border-t border-border px-4 pb-4 animate-fade-in -mt-1 gpb-card-shadow">
+          <div className="bg-card rounded-b-2xl border-t border-border px-4 pb-4 animate-fade-in -mt-1 gpb-card-shadow">
             {[
               { label: 'Пенсионный фонд (ПФР)', val: calc.pfr, pct: '22%' },
               { label: 'Медицинское страхование (ОМС)', val: calc.oms, pct: '5.1%' },

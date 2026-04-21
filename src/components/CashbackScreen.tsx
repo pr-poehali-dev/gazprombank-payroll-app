@@ -116,7 +116,7 @@ export default function CashbackScreen() {
 
       {/* Free categories */}
       <div className="px-5 -mt-4 mb-5">
-        <div className="bg-white rounded-2xl gpb-card-shadow p-4">
+        <div className="bg-card rounded-2xl gpb-card-shadow p-4">
           <div className="flex items-center justify-between mb-1">
             <p className="text-sm font-bold text-foreground">Бесплатные категории</p>
             <span className="text-xs font-semibold text-muted-foreground bg-gpb-surface px-2 py-0.5 rounded-full">
@@ -183,7 +183,7 @@ export default function CashbackScreen() {
             return (
               <div
                 key={plan.id}
-                className={`bg-white rounded-2xl gpb-card-shadow overflow-hidden border-2 transition-all ${isActive ? 'border-gpb-blue' : 'border-transparent'}`}
+                className={`bg-card rounded-2xl gpb-card-shadow overflow-hidden border-2 transition-all ${isActive ? 'border-gpb-blue' : 'border-transparent'}`}
               >
                 {/* Plan header */}
                 <button

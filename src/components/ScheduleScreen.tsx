@@ -56,7 +56,7 @@ export default function ScheduleScreen() {
 
       {/* Stats */}
       <div className="px-5 -mt-4 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow p-4 grid grid-cols-3 gap-3 text-center">
+        <div className="bg-card rounded-2xl gpb-card-shadow p-4 grid grid-cols-3 gap-3 text-center">
           <div>
             <p className="text-xl font-bold text-foreground">{totalHours}</p>
             <p className="text-xs text-muted-foreground">Часов</p>
@@ -74,7 +74,7 @@ export default function ScheduleScreen() {
 
       {/* Calendar */}
       <div className="px-5 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow p-4">
+        <div className="bg-card rounded-2xl gpb-card-shadow p-4">
           <div className="grid grid-cols-7 mb-2">
             {DAYS.map(d => (
               <div key={d} className="text-center text-xs font-semibold text-muted-foreground py-1">{d}</div>
@@ -109,7 +109,7 @@ export default function ScheduleScreen() {
 
       {/* Legend */}
       <div className="px-5 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow p-4">
+        <div className="bg-card rounded-2xl gpb-card-shadow p-4">
           <p className="text-xs font-semibold text-muted-foreground mb-3 uppercase tracking-wider">Легенда</p>
           <div className="flex flex-wrap gap-2">
             {Object.entries(shiftConfig).map(([key, cfg]) => (
@@ -125,7 +125,7 @@ export default function ScheduleScreen() {
       {/* Selected day detail */}
       {selectedDay && shifts[selectedDay] && (
         <div className="px-5 mb-6 animate-scale-in">
-          <div className="bg-white rounded-2xl gpb-card-shadow p-4 border-l-4 border-gpb-blue">
+          <div className="bg-card rounded-2xl gpb-card-shadow p-4 border-l-4 border-gpb-blue">
             <p className="text-xs font-semibold text-muted-foreground mb-2">{selectedDay} {MONTHS[month]}</p>
             <div className="flex items-center justify-between">
               <div>

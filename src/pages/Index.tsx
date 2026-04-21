@@ -11,8 +11,9 @@ import NotificationsScreen from '@/components/NotificationsScreen';
 import SupportScreen from '@/components/SupportScreen';
 import CashbackScreen from '@/components/CashbackScreen';
 import AiAssistantScreen from '@/components/AiAssistantScreen';
+import DocumentsScreen from '@/components/DocumentsScreen';
 
-type Page = 'home' | 'profile' | 'schedule' | 'calculator' | 'card' | 'history' | 'notifications' | 'support' | 'cashback' | 'ai';
+type Page = 'home' | 'profile' | 'schedule' | 'calculator' | 'card' | 'history' | 'notifications' | 'support' | 'cashback' | 'ai' | 'documents';
 
 const NAV_TABS: { id: Page; icon: string; label: string }[] = [
   { id: 'home', icon: 'Home', label: 'Главная' },
@@ -46,6 +47,7 @@ export default function Index() {
       case 'support': return <SupportScreen />;
       case 'cashback': return <CashbackScreen />;
       case 'ai': return <AiAssistantScreen />;
+      case 'documents': return <DocumentsScreen />;
       default: return <HomeScreen onNavigate={navigate} />;
     }
   };
@@ -67,7 +69,7 @@ export default function Index() {
       </div>
 
       <div
-        className="flex-shrink-0 bg-white border-t border-border"
+        className="flex-shrink-0 bg-card border-t border-border"
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
         <div className="flex items-center">

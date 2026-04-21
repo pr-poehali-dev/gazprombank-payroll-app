@@ -52,7 +52,7 @@ export default function SupportScreen() {
 
       {/* Contacts */}
       <div className="px-5 -mt-4 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow overflow-hidden">
+        <div className="bg-card rounded-2xl gpb-card-shadow overflow-hidden">
           {contacts.map((c, idx) => (
             <button
               key={c.label}
@@ -74,7 +74,7 @@ export default function SupportScreen() {
 
       {/* Write message */}
       <div className="px-5 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow p-4">
+        <div className="bg-card rounded-2xl gpb-card-shadow p-4">
           <p className="text-sm font-bold text-foreground mb-3">Написать обращение</p>
           {sent ? (
             <div className="py-6 text-center animate-scale-in">
@@ -110,7 +110,7 @@ export default function SupportScreen() {
       {/* FAQ */}
       <div className="px-5 mb-6">
         <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Частые вопросы</p>
-        <div className="bg-white rounded-2xl gpb-card-shadow overflow-hidden">
+        <div className="bg-card rounded-2xl gpb-card-shadow overflow-hidden">
           {faqItems.map((item, idx) => (
             <div key={idx} className={idx < faqItems.length - 1 ? 'border-b border-border' : ''}>
               <button

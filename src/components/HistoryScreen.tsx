@@ -67,7 +67,7 @@ export default function HistoryScreen() {
 
       {/* Search + Filter */}
       <div className="px-5 -mt-4 mb-4">
-        <div className="bg-white rounded-2xl gpb-card-shadow p-3">
+        <div className="bg-card rounded-2xl gpb-card-shadow p-3">
           <div className="relative mb-3">
             <Icon name="Search" size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <input
@@ -93,7 +93,7 @@ export default function HistoryScreen() {
 
       {/* Transactions list */}
       <div className="px-5 mb-6">
-        <div className="bg-white rounded-2xl gpb-card-shadow overflow-hidden">
+        <div className="bg-card rounded-2xl gpb-card-shadow overflow-hidden">
           {filtered.length === 0 ? (
             <div className="py-12 text-center text-muted-foreground">
               <Icon name="SearchX" size={32} className="mx-auto mb-2 opacity-40" fallback="Search" />
