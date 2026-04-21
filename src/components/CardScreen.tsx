@@ -60,7 +60,7 @@ export default function CardScreen() {
           <div className="absolute bottom-5 left-5 right-5 flex justify-between items-end">
             <div>
               <p className="text-white/60 text-[10px] mb-0.5">ДЕРЖАТЕЛЬ</p>
-              <p className="text-white text-sm font-semibold tracking-wide">A. PETROV</p>
+              <p className="text-white text-sm font-semibold tracking-wide">A. ARMENOVICH</p>
             </div>
             <div className="text-right">
               <p className="text-white/60 text-[10px] mb-0.5">ДЕЙСТВУЕТ ДО</p>
