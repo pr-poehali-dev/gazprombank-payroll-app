@@ -66,10 +66,14 @@ export default function CardScreen() {
               <p className="text-white/60 text-[10px] mb-0.5">ДЕЙСТВУЕТ ДО</p>
               <p className="text-white text-sm font-semibold">03/28</p>
             </div>
-            <div className="w-10 h-6 flex items-center">
-              <div className="relative">
-                <div className="w-6 h-6 rounded-full bg-red-500 opacity-80"></div>
-                <div className="w-6 h-6 rounded-full bg-gpb-gold absolute top-0 left-3 mix-blend-multiply opacity-90"></div>
+            <div className="flex items-center">
+              <div className="flex flex-col items-center leading-none">
+                <span className="text-white font-black text-sm tracking-tight" style={{fontFamily:'serif'}}>МИР</span>
+                <div className="flex gap-0.5 mt-0.5">
+                  <div className="w-3 h-1 rounded-full bg-emerald-400"></div>
+                  <div className="w-3 h-1 rounded-full bg-sky-300"></div>
+                  <div className="w-3 h-1 rounded-full bg-red-400"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -128,7 +132,7 @@ export default function CardScreen() {
           {activeTab === 'info' && (
             <div className="p-4 space-y-3">
               {[
-                { label: 'Тип карты', val: 'Mastercard Debit' },
+                { label: 'Тип карты', val: 'Мир Дебетовая' },
                 { label: 'Зарплатный проект', val: 'ООО «Газпром Нефть»' },
                 { label: 'Дата открытия', val: '12 апреля 2022' },
                 { label: 'Валюта', val: 'Российский рубль (RUB)' },
