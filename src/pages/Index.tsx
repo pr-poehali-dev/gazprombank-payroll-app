@@ -60,7 +60,7 @@ export default function Index() {
         {showBackButton && (
           <button
             onClick={() => navigate('home')}
-            className="fixed top-4 left-4 z-50 w-9 h-9 bg-black/20 backdrop-blur rounded-full flex items-center justify-center"
+            className="fixed top-4 left-4 z-50 w-10 h-10 bg-black/25 backdrop-blur-md rounded-2xl flex items-center justify-center"
           >
             <Icon name="ArrowLeft" size={18} className="text-white" />
           </button>
@@ -69,10 +69,10 @@ export default function Index() {
       </div>
 
       <div
-        className="flex-shrink-0 bg-card border-t border-border"
+        className="flex-shrink-0 bg-card/95 backdrop-blur-xl border-t border-border"
         style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       >
-        <div className="flex items-center">
+        <div className="flex items-center px-2">
           {NAV_TABS.map(tab => {
             const isActive = activePage === tab.id;
             const isAi = tab.id === 'ai';
@@ -80,20 +80,23 @@ export default function Index() {
               <button
                 key={tab.id}
                 onClick={() => setActivePage(tab.id)}
-                className={`flex-1 flex flex-col items-center gap-1 py-3 transition-all relative ${isActive ? 'tab-active' : ''}`}
+                className={`flex-1 flex flex-col items-center gap-1 pt-3 pb-2.5 transition-all relative ${isActive ? 'tab-active' : ''}`}
               >
-                <div className={`
-                  w-7 h-7 flex items-center justify-center rounded-xl transition-all
-                  ${isAi ? 'bg-gradient-to-br from-gpb-blue to-blue-400' : isActive ? 'bg-gpb-blue' : ''}
-                `}>
-                  <Icon
-                    name={tab.icon}
-                    size={18}
-                    className={isActive || isAi ? 'text-white' : 'text-muted-foreground'}
-                    fallback="Circle"
-                  />
-                </div>
-                <span className={`text-[10px] font-semibold transition-colors ${isActive ? 'text-gpb-blue' : isAi ? 'text-gpb-blue/80' : 'text-muted-foreground'}`}>
+                {isAi ? (
+                  <div className="w-11 h-7 bg-gradient-to-br from-gpb-blue to-blue-400 rounded-xl flex items-center justify-center shadow-sm">
+                    <Icon name="Bot" size={17} className="text-white" fallback="Circle" />
+                  </div>
+                ) : (
+                  <div className={`w-10 h-7 flex items-center justify-center rounded-xl transition-all ${isActive ? 'bg-gpb-surface' : ''}`}>
+                    <Icon
+                      name={tab.icon}
+                      size={19}
+                      className={isActive ? 'text-gpb-blue' : 'text-muted-foreground'}
+                      fallback="Circle"
+                    />
+                  </div>
+                )}
+                <span className={`text-[10px] font-semibold transition-colors ${isActive ? 'text-gpb-blue' : isAi ? 'text-gpb-blue' : 'text-muted-foreground'}`}>
                   {tab.label}
                 </span>
               </button>

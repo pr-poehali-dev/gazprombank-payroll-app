@@ -27,31 +27,41 @@ export default function CardScreen() {
   return (
     <div className="flex flex-col min-h-full animate-fade-in">
       {/* Header */}
-      <div className="gpb-gradient px-5 pt-14 pb-6">
-        <h1 className="text-white text-xl font-bold mb-6">Зарплатная карта</h1>
+      <div className="gpb-gradient px-5 pt-14 pb-7">
+        <h1 className="text-white text-2xl font-bold tracking-tight mb-6">Зарплатная карта</h1>
 
         {/* Card visual */}
-        <div className="relative h-48 rounded-3xl overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #0a2a5e 0%, #1a4a8a 50%, #0d3870 100%)' }}>
-          {/* Decorative circles */}
-          <div className="absolute -top-8 -right-8 w-40 h-40 rounded-full bg-white/5"></div>
-          <div className="absolute -bottom-12 -left-8 w-48 h-48 rounded-full bg-white/5"></div>
+        <div className="relative h-52 rounded-3xl overflow-hidden"
+          style={{ background: 'linear-gradient(145deg, #0b1f4a 0%, #0d3272 40%, #1152a8 75%, #1a6abf 100%)' }}>
+          {/* Decorative blobs */}
+          <div className="absolute -top-10 -right-10 w-44 h-44 rounded-full bg-white/[0.04]"></div>
+          <div className="absolute -bottom-16 -left-10 w-52 h-52 rounded-full bg-white/[0.04]"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-32 rounded-full bg-white/[0.03] blur-xl"></div>
 
-          {/* GPB logo area */}
-          <div className="absolute top-5 left-5 flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gpb-gold flex items-center justify-center">
-              <span className="text-gpb-blue-dark text-xs font-black">ГПБ</span>
+          {/* GPB logo */}
+          <div className="absolute top-5 left-5 flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-gpb-gold flex items-center justify-center shadow-lg">
+              <span className="text-[11px] font-black" style={{color:'#0b1f4a'}}>ГПБ</span>
             </div>
-            <span className="text-white text-xs font-semibold opacity-80">Газпромбанк</span>
+            <div>
+              <p className="text-white text-[11px] font-bold leading-none">Газпромбанк</p>
+              <p className="text-white/45 text-[9px] tracking-widest uppercase mt-0.5">Зарплатная</p>
+            </div>
           </div>
-          <div className="absolute top-5 right-5">
-            <span className="text-white/60 text-xs">ЗАРПЛАТНАЯ</span>
+
+          {/* Chip */}
+          <div className="absolute top-5 right-5 w-10 h-7 rounded-md border border-white/20 bg-white/10 flex items-center justify-center">
+            <div className="w-6 h-4 rounded-sm border border-gpb-gold/60 bg-gpb-gold/15 grid grid-cols-2 gap-px p-0.5">
+              <div className="bg-gpb-gold/40 rounded-[1px]"></div>
+              <div className="bg-gpb-gold/40 rounded-[1px]"></div>
+              <div className="bg-gpb-gold/40 rounded-[1px]"></div>
+              <div className="bg-gpb-gold/40 rounded-[1px]"></div>
+            </div>
           </div>
 
           {/* Card number */}
-          <div className="absolute bottom-14 left-5">
-            <p className="text-white/60 text-xs mb-1">Номер карты</p>
-            <p className="text-white font-mono text-base tracking-widest">
+          <div className="absolute left-5 top-1/2 -translate-y-1/2">
+            <p className="text-white font-mono text-lg tracking-[0.2em] font-semibold">
               {showNumber ? '5469 3800 4821 7392' : '•••• •••• •••• 7392'}
             </p>
           </div>
@@ -59,21 +69,19 @@ export default function CardScreen() {
           {/* Bottom row */}
           <div className="absolute bottom-5 left-5 right-5 flex justify-between items-end">
             <div>
-              <p className="text-white/60 text-[10px] mb-0.5">ДЕРЖАТЕЛЬ</p>
-              <p className="text-white text-sm font-semibold tracking-wide">A. AVAGYAN</p>
+              <p className="text-white/45 text-[9px] font-semibold uppercase tracking-widest mb-1">Держатель</p>
+              <p className="text-white text-sm font-bold tracking-wider">A. AVAGYAN</p>
             </div>
-            <div className="text-right">
-              <p className="text-white/60 text-[10px] mb-0.5">ДЕЙСТВУЕТ ДО</p>
-              <p className="text-white text-sm font-semibold">03/28</p>
+            <div className="text-center">
+              <p className="text-white/45 text-[9px] font-semibold uppercase tracking-widest mb-1">До</p>
+              <p className="text-white text-sm font-bold">03/28</p>
             </div>
-            <div className="flex items-center">
-              <div className="flex flex-col items-center leading-none">
-                <span className="text-white font-black text-sm tracking-tight" style={{fontFamily:'serif'}}>МИР</span>
-                <div className="flex gap-0.5 mt-0.5">
-                  <div className="w-3 h-1 rounded-full bg-emerald-400"></div>
-                  <div className="w-3 h-1 rounded-full bg-sky-300"></div>
-                  <div className="w-3 h-1 rounded-full bg-red-400"></div>
-                </div>
+            <div className="flex flex-col items-center">
+              <span className="text-white font-black text-base tracking-tight" style={{fontFamily:'serif', letterSpacing:'0.05em'}}>МИР</span>
+              <div className="flex gap-[3px] mt-1">
+                <div className="w-4 h-1 rounded-full bg-emerald-400/90"></div>
+                <div className="w-4 h-1 rounded-full bg-sky-300/90"></div>
+                <div className="w-4 h-1 rounded-full bg-red-400/90"></div>
               </div>
             </div>
           </div>
@@ -81,20 +89,20 @@ export default function CardScreen() {
           {/* Eye button */}
           <button
             onClick={() => setShowNumber(!showNumber)}
-            className="absolute bottom-14 right-5 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center"
+            className="absolute right-5 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/10 rounded-xl flex items-center justify-center"
           >
             <Icon name={showNumber ? 'EyeOff' : 'Eye'} size={14} className="text-white" />
           </button>
         </div>
 
         {/* Quick actions */}
-        <div className="grid grid-cols-4 gap-2 mt-4">
+        <div className="grid grid-cols-4 gap-2 mt-5">
           {actions.map((a) => (
-            <button key={a.label} className="flex flex-col items-center gap-1.5">
-              <div className="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center">
-                <Icon name={a.icon} size={18} className="text-white" fallback="Star" />
+            <button key={a.label} className="flex flex-col items-center gap-2">
+              <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center">
+                <Icon name={a.icon} size={19} className="text-white" fallback="Star" />
               </div>
-              <span className="text-xs text-blue-200">{a.label}</span>
+              <span className="text-[11px] text-white/70 font-semibold">{a.label}</span>
             </button>
           ))}
         </div>

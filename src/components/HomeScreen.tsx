@@ -45,152 +45,158 @@ export default function HomeScreen({ onNavigate }: Props) {
   return (
     <div className="flex flex-col min-h-full animate-fade-in">
       {/* Header */}
-      <div className="gpb-gradient px-5 pt-14 pb-8">
-        <div className="flex items-center justify-between mb-6">
+      <div className="gpb-gradient px-5 pt-14 pb-10">
+        <div className="flex items-center justify-between mb-7">
           <div>
-            <p className="text-blue-200 text-sm font-medium">Добрый день,</p>
-            <h1 className="text-white text-xl font-bold">Артур Арменович</h1>
+            <p className="text-white/60 text-xs font-medium tracking-wide uppercase mb-0.5">Добрый день</p>
+            <h1 className="text-white text-2xl font-bold tracking-tight">Артур Арменович</h1>
           </div>
           <button
             onClick={() => onNavigate('notifications')}
-            className="relative w-10 h-10 rounded-full bg-white/10 flex items-center justify-center"
+            className="relative w-10 h-10 rounded-2xl glass-card flex items-center justify-center"
           >
-            <Icon name="Bell" size={20} className="text-white" />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-gpb-gold rounded-full"></span>
+            <Icon name="Bell" size={19} className="text-white" />
+            <span className="absolute top-2 right-2 w-2 h-2 bg-gpb-gold rounded-full ring-2 ring-white/20"></span>
           </button>
         </div>
 
         {/* Salary card */}
-        <div className="bg-white/10 backdrop-blur rounded-2xl p-5 border border-white/15">
-          <p className="text-blue-200 text-xs font-medium uppercase tracking-wider mb-1">Ближайшая выплата</p>
-          <div className="flex items-end justify-between">
+        <div className="glass-card rounded-3xl p-5">
+          <div className="flex items-start justify-between mb-5">
             <div>
-              <p className="text-white text-3xl font-bold tracking-tight">85 400 <span className="text-xl">₽</span></p>
-              <p className="text-blue-200 text-sm mt-1">1 апреля 2026</p>
+              <p className="text-white/55 text-[11px] font-semibold uppercase tracking-widest mb-1.5">Ближайшая выплата</p>
+              <p className="text-white text-[34px] font-bold leading-none tracking-tight">85 400 <span className="text-2xl font-semibold opacity-80">₽</span></p>
+              <p className="text-white/55 text-sm mt-2">1 апреля 2026</p>
             </div>
-            <div className="text-right">
-              <button
-                onClick={() => setShowAdvanceModal(true)}
-                className="bg-gpb-gold/20 border border-gpb-gold/40 rounded-lg px-3 py-1.5 text-left hover:bg-gpb-gold/30 transition-colors"
-              >
-                <p className="text-gpb-gold text-xs font-semibold">Аванс</p>
-                <p className="text-white text-sm font-bold">32 000 ₽</p>
-              </button>
-            </div>
+            <button
+              onClick={() => setShowAdvanceModal(true)}
+              className="flex flex-col items-end"
+            >
+              <div className="bg-gpb-gold/20 border border-gpb-gold/35 rounded-2xl px-4 py-2.5 text-right hover:bg-gpb-gold/30 transition-colors">
+                <p className="text-gpb-gold text-[11px] font-bold uppercase tracking-wide">Аванс</p>
+                <p className="text-white text-base font-bold mt-0.5">32 000 ₽</p>
+              </div>
+            </button>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+          <div className="flex items-center justify-between pt-4 border-t border-white/12">
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-              <span className="text-blue-100 text-xs">Зарплатный счёт активен</span>
+              <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
+              <span className="text-white/60 text-xs">Зарплатный счёт активен</span>
             </div>
-            <span className="text-blue-200 text-xs">•••• 4821</span>
+            <span className="text-white/45 text-xs font-mono">•••• 4821</span>
           </div>
         </div>
       </div>
 
       {/* Quick actions */}
-      <div className="px-5 -mt-4">
-        <div className="bg-card rounded-2xl gpb-card-shadow p-4 grid grid-cols-4 gap-2">
+      <div className="px-4 -mt-5 z-10 relative">
+        <div className="bg-card rounded-3xl gpb-card-shadow-md p-4 grid grid-cols-4 gap-1">
           {quickActions.map((action) => (
             <button
               key={action.page}
               onClick={() => onNavigate(action.page)}
-              className="flex flex-col items-center gap-2 py-2 rounded-xl hover:bg-gpb-surface transition-colors"
+              className="flex flex-col items-center gap-2.5 py-3 px-1 rounded-2xl hover:bg-gpb-surface transition-colors active:scale-95"
             >
-              <div className="w-11 h-11 rounded-full bg-gpb-surface flex items-center justify-center">
-                <Icon name={action.icon} size={20} className="text-gpb-blue" />
+              <div className="w-12 h-12 rounded-2xl bg-gpb-surface flex items-center justify-center">
+                <Icon name={action.icon} size={21} className="text-gpb-blue" />
               </div>
-              <span className="text-xs text-foreground font-medium text-center leading-tight">{action.label}</span>
+              <span className="text-[11px] text-foreground font-semibold text-center leading-tight">{action.label}</span>
             </button>
           ))}
         </div>
       </div>
 
       {/* Stats row */}
-      <div className="px-5 mt-4 grid grid-cols-2 gap-3">
-        <div className="bg-card rounded-2xl gpb-card-shadow p-4">
-          <p className="text-muted-foreground text-xs mb-1">Отработано часов</p>
-          <p className="text-2xl font-bold text-foreground">156</p>
-          <p className="text-xs text-emerald-600 font-medium mt-1 flex items-center gap-1">
-            <Icon name="TrendingUp" size={12} />
-            Март 2026
+      <div className="px-4 mt-3 grid grid-cols-2 gap-3">
+        <div className="bg-card rounded-3xl gpb-card-shadow p-4">
+          <div className="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mb-3">
+            <Icon name="Clock" size={16} className="text-gpb-blue" />
+          </div>
+          <p className="text-2xl font-bold text-foreground leading-none">156</p>
+          <p className="text-muted-foreground text-xs mt-1">часов в марте</p>
+          <p className="text-xs text-emerald-600 font-semibold mt-2 flex items-center gap-1">
+            <Icon name="TrendingUp" size={11} />
+            +8 к прошлому
           </p>
         </div>
-        <div className="bg-card rounded-2xl gpb-card-shadow p-4">
-          <p className="text-muted-foreground text-xs mb-1">Смены в месяце</p>
-          <p className="text-2xl font-bold text-foreground">19</p>
-          <p className="text-xs text-blue-600 font-medium mt-1 flex items-center gap-1">
-            <Icon name="Calendar" size={12} />
+        <div className="bg-card rounded-3xl gpb-card-shadow p-4">
+          <div className="w-9 h-9 rounded-xl bg-violet-50 dark:bg-violet-900/20 flex items-center justify-center mb-3">
+            <Icon name="Calendar" size={16} className="text-violet-600" />
+          </div>
+          <p className="text-2xl font-bold text-foreground leading-none">19</p>
+          <p className="text-muted-foreground text-xs mt-1">смен в месяце</p>
+          <p className="text-xs text-blue-600 font-semibold mt-2 flex items-center gap-1">
+            <Icon name="CircleDot" size={11} />
             Осталось 4
           </p>
         </div>
       </div>
 
       {/* Income chart */}
-      <div className="px-5 mt-4">
-        <div className="bg-card rounded-2xl gpb-card-shadow p-4">
-          <div className="flex items-center justify-between mb-4">
+      <div className="px-4 mt-3">
+        <div className="bg-card rounded-3xl gpb-card-shadow p-5">
+          <div className="flex items-center justify-between mb-5">
             <div>
               <p className="text-sm font-bold text-foreground">Динамика дохода</p>
-              <p className="text-xs text-muted-foreground">За последние 6 месяцев</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Последние 6 месяцев</p>
             </div>
-            <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg px-2 py-1 flex items-center gap-1">
+            <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-xl px-2.5 py-1.5 flex items-center gap-1.5">
               <Icon name="TrendingUp" size={12} className="text-emerald-600" />
-              <span className="text-emerald-600 text-xs font-semibold">+5.2%</span>
+              <span className="text-emerald-600 text-xs font-bold">+5.2%</span>
             </div>
           </div>
-          <div className="flex items-end justify-between gap-1.5 h-20">
+          <div className="flex items-end justify-between gap-2 h-20">
             {monthlyData.map((d, i) => {
               const heightPct = (d.amount / maxAmount) * 100;
               const isLast = i === monthlyData.length - 1;
               return (
-                <div key={d.month} className="flex-1 flex flex-col items-center gap-1.5">
+                <div key={d.month} className="flex-1 flex flex-col items-center gap-2">
                   <div className="w-full flex items-end" style={{ height: '64px' }}>
                     <div
-                      className={`w-full rounded-t-md transition-all ${isLast ? 'bg-gpb-blue' : 'bg-gpb-surface dark:bg-gpb-surface'}`}
+                      className={`w-full rounded-xl transition-all ${isLast ? 'bg-gpb-blue' : 'bg-gpb-surface dark:bg-gpb-surface'}`}
                       style={{ height: `${heightPct}%` }}
                     />
                   </div>
-                  <span className={`text-[10px] font-medium ${isLast ? 'text-gpb-blue' : 'text-muted-foreground'}`}>{d.month}</span>
+                  <span className={`text-[10px] font-semibold ${isLast ? 'text-gpb-blue' : 'text-muted-foreground'}`}>{d.month}</span>
                 </div>
               );
             })}
           </div>
-          <div className="mt-3 pt-3 border-t border-border flex justify-between">
+          <div className="mt-4 pt-4 border-t border-border flex justify-between">
             <div>
-              <p className="text-xs text-muted-foreground">Средний доход</p>
-              <p className="text-sm font-bold text-foreground">86 267 ₽</p>
+              <p className="text-[11px] text-muted-foreground">Средний доход</p>
+              <p className="text-sm font-bold text-foreground mt-0.5">86 267 ₽</p>
             </div>
             <div className="text-right">
-              <p className="text-xs text-muted-foreground">Максимум</p>
-              <p className="text-sm font-bold text-foreground">94 800 ₽</p>
+              <p className="text-[11px] text-muted-foreground">Максимум</p>
+              <p className="text-sm font-bold text-foreground mt-0.5">94 800 ₽</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Recent transactions */}
-      <div className="px-5 mt-4 mb-6">
+      <div className="px-4 mt-3 mb-6">
         <div className="flex items-center justify-between mb-3">
           <h2 className="text-sm font-bold text-foreground">Последние операции</h2>
-          <button onClick={() => onNavigate('history')} className="text-gpb-blue text-xs font-medium">
-            Все операции
+          <button onClick={() => onNavigate('history')} className="text-gpb-blue text-xs font-semibold">
+            Все →
           </button>
         </div>
-        <div className="bg-card rounded-2xl gpb-card-shadow overflow-hidden">
+        <div className="bg-card rounded-3xl gpb-card-shadow overflow-hidden">
           {transactions.map((item, idx) => (
-            <div key={item.id} className={`flex items-center justify-between px-4 py-3.5 ${idx < transactions.length - 1 ? 'border-b border-border' : ''}`}>
+            <div key={item.id} className={`flex items-center justify-between px-4 py-4 ${idx < transactions.length - 1 ? 'border-b border-border' : ''}`}>
               <div className="flex items-center gap-3">
-                <div className={`w-9 h-9 rounded-full flex items-center justify-center ${item.type === 'success' ? 'bg-emerald-50 dark:bg-emerald-900/20' : 'bg-red-50 dark:bg-red-900/20'}`}>
+                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center ${item.type === 'success' ? 'bg-emerald-50 dark:bg-emerald-900/20' : 'bg-red-50 dark:bg-red-900/20'}`}>
                   <Icon name={item.type === 'success' ? 'ArrowDownLeft' : 'ArrowUpRight'} size={16} className={item.type === 'success' ? 'text-emerald-600' : 'text-red-500'} />
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-foreground">{item.text}</p>
-                  <p className="text-xs text-muted-foreground">{item.time}</p>
+                  <p className="text-sm font-semibold text-foreground">{item.text}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{item.time}</p>
                 </div>
               </div>
-              <span className={`text-sm font-semibold ${item.type === 'success' ? 'text-emerald-600' : 'text-red-500'}`}>
+              <span className={`text-sm font-bold ${item.type === 'success' ? 'text-emerald-600' : 'text-red-500'}`}>
                 {item.amount}
               </span>
             </div>
@@ -207,7 +213,7 @@ export default function HomeScreen({ onNavigate }: Props) {
           >
             {advanceSent ? (
               <div className="flex flex-col items-center py-6 gap-3">
-                <div className="w-16 h-16 rounded-full bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 flex items-center justify-center">
                   <Icon name="CheckCircle" size={36} className="text-emerald-500" />
                 </div>
                 <p className="text-lg font-bold text-foreground">Заявка отправлена</p>
@@ -217,7 +223,7 @@ export default function HomeScreen({ onNavigate }: Props) {
               <>
                 <div className="flex items-center justify-between mb-5">
                   <h2 className="text-lg font-bold text-foreground">Запрос аванса</h2>
-                  <button onClick={() => setShowAdvanceModal(false)} className="w-8 h-8 rounded-full bg-gpb-surface flex items-center justify-center">
+                  <button onClick={() => setShowAdvanceModal(false)} className="w-8 h-8 rounded-xl bg-gpb-surface flex items-center justify-center">
                     <Icon name="X" size={16} className="text-muted-foreground" />
                   </button>
                 </div>
@@ -229,13 +235,13 @@ export default function HomeScreen({ onNavigate }: Props) {
                 </div>
 
                 <div className="mb-4">
-                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block mb-2">Сумма аванса</label>
+                  <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider block mb-2">Сумма аванса</label>
                   <div className="relative">
                     <input
                       type="number"
                       value={advanceAmount}
                       onChange={e => setAdvanceAmount(e.target.value)}
-                      className="w-full bg-gpb-surface border border-border rounded-xl px-4 py-3 text-lg font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-gpb-blue pr-10"
+                      className="w-full bg-gpb-surface border border-border rounded-2xl px-4 py-3 text-lg font-bold text-foreground focus:outline-none focus:ring-2 focus:ring-gpb-blue pr-10"
                     />
                     <span className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground font-semibold">₽</span>
                   </div>
@@ -244,7 +250,7 @@ export default function HomeScreen({ onNavigate }: Props) {
                       <button
                         key={v}
                         onClick={() => setAdvanceAmount(String(v))}
-                        className={`flex-1 py-1.5 rounded-lg text-xs font-semibold border transition-colors ${String(v) === advanceAmount ? 'bg-gpb-blue text-white border-gpb-blue' : 'border-border text-muted-foreground hover:border-gpb-blue'}`}
+                        className={`flex-1 py-2 rounded-xl text-xs font-bold border transition-colors ${String(v) === advanceAmount ? 'bg-gpb-blue text-white border-gpb-blue' : 'border-border text-muted-foreground hover:border-gpb-blue'}`}
                       >
                         {v.toLocaleString('ru')} ₽
                       </button>
@@ -252,14 +258,14 @@ export default function HomeScreen({ onNavigate }: Props) {
                   </div>
                 </div>
 
-                <div className="bg-gpb-surface rounded-xl p-3 mb-5 flex items-center gap-2">
+                <div className="bg-gpb-surface rounded-2xl p-3 mb-5 flex items-center gap-2">
                   <Icon name="Info" size={14} className="text-muted-foreground flex-shrink-0" />
                   <p className="text-xs text-muted-foreground">Сумма будет вычтена из ближайшей выплаты 1 апреля 2026</p>
                 </div>
 
                 <button
                   onClick={handleAdvanceRequest}
-                  className="w-full bg-gpb-blue text-white rounded-xl py-4 text-sm font-bold"
+                  className="w-full bg-gpb-blue text-white rounded-2xl py-4 text-sm font-bold"
                 >
                   Получить аванс
                 </button>

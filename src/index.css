@@ -4,81 +4,85 @@
 
 @layer base {
   :root {
-    --background: 210 25% 97%;
-    --foreground: 213 60% 12%;
+    --background: 220 22% 96%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 213 60% 12%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 213 60% 12%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 213 91% 22%;
+    --primary: 217 91% 30%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 20% 94%;
-    --secondary-foreground: 213 60% 12%;
+    --secondary: 217 20% 92%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 210 20% 94%;
-    --muted-foreground: 213 20% 50%;
+    --muted: 217 20% 92%;
+    --muted-foreground: 217 18% 48%;
 
-    --accent: 42 90% 52%;
-    --accent-foreground: 213 60% 12%;
+    --accent: 38 92% 55%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 88%;
-    --input: 210 20% 88%;
-    --ring: 213 91% 22%;
+    --border: 217 22% 90%;
+    --input: 217 22% 90%;
+    --ring: 217 91% 30%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     /* GPB brand */
-    --gpb-blue: 213 91% 22%;
-    --gpb-blue-dark: 213 91% 15%;
-    --gpb-blue-light: 213 60% 35%;
-    --gpb-gold: 42 90% 52%;
-    --gpb-gold-light: 42 90% 65%;
-    --gpb-surface: 213 40% 96%;
+    --gpb-blue: 217 91% 30%;
+    --gpb-blue-dark: 217 91% 18%;
+    --gpb-blue-mid: 217 80% 40%;
+    --gpb-blue-light: 217 60% 58%;
+    --gpb-gold: 38 92% 55%;
+    --gpb-gold-light: 38 92% 68%;
+    --gpb-surface: 217 40% 96%;
+    --gpb-surface-2: 217 30% 93%;
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 210 20% 92%;
+    --background: 222 28% 9%;
+    --foreground: 210 22% 93%;
 
-    --card: 220 18% 14%;
-    --card-foreground: 210 20% 92%;
+    --card: 222 25% 13%;
+    --card-foreground: 210 22% 93%;
 
-    --popover: 220 18% 14%;
-    --popover-foreground: 210 20% 92%;
+    --popover: 222 25% 13%;
+    --popover-foreground: 210 22% 93%;
 
-    --primary: 213 80% 55%;
+    --primary: 217 85% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 210 20% 85%;
+    --secondary: 222 20% 18%;
+    --secondary-foreground: 210 22% 85%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 213 15% 55%;
+    --muted: 222 20% 18%;
+    --muted-foreground: 217 15% 52%;
 
-    --accent: 42 90% 52%;
-    --accent-foreground: 213 60% 12%;
+    --accent: 38 92% 55%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 22%;
-    --input: 220 15% 22%;
-    --ring: 213 80% 55%;
+    --border: 222 18% 20%;
+    --input: 222 18% 20%;
+    --ring: 217 85% 58%;
 
     /* GPB brand dark */
-    --gpb-blue: 213 80% 55%;
-    --gpb-blue-dark: 213 80% 40%;
-    --gpb-blue-light: 213 60% 65%;
-    --gpb-gold: 42 90% 52%;
-    --gpb-gold-light: 42 90% 65%;
-    --gpb-surface: 220 15% 18%;
+    --gpb-blue: 217 85% 58%;
+    --gpb-blue-dark: 217 85% 42%;
+    --gpb-blue-mid: 217 75% 50%;
+    --gpb-blue-light: 217 65% 68%;
+    --gpb-gold: 38 92% 55%;
+    --gpb-gold-light: 38 92% 68%;
+    --gpb-surface: 222 20% 18%;
+    --gpb-surface-2: 222 20% 16%;
   }
 }
 
@@ -97,36 +101,43 @@
 @layer utilities {
   .gpb-gradient {
     background: linear-gradient(
-      135deg,
-      hsl(213, 91%, 18%) 0%,
-      hsl(213, 91%, 28%) 100%
+      160deg,
+      hsl(222, 91%, 18%) 0%,
+      hsl(217, 85%, 32%) 55%,
+      hsl(210, 70%, 42%) 100%
     );
   }
 
   .gpb-card-shadow {
     box-shadow:
-      0 2px 12px rgba(0, 42, 92, 0.08),
-      0 1px 3px rgba(0, 42, 92, 0.05);
+      0 1px 3px rgba(0, 30, 80, 0.06),
+      0 4px 16px rgba(0, 30, 80, 0.07);
+  }
+
+  .gpb-card-shadow-md {
+    box-shadow:
+      0 2px 8px rgba(0, 30, 80, 0.08),
+      0 8px 28px rgba(0, 30, 80, 0.1);
   }
 
   .gpb-gold-gradient {
     background: linear-gradient(
       135deg,
-      hsl(42, 90%, 48%) 0%,
-      hsl(42, 90%, 60%) 100%
+      hsl(38, 92%, 48%) 0%,
+      hsl(38, 92%, 62%) 100%
     );
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.35s ease-out both;
+    animation: fadeIn 0.3s ease-out both;
   }
 
   .animate-slide-up {
-    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: slideUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   .animate-scale-in {
-    animation: scaleIn 0.25s ease-out both;
+    animation: scaleIn 0.22s ease-out both;
   }
 
   .tab-active {
@@ -136,20 +147,27 @@
   .tab-active::after {
     content: "";
     position: absolute;
-    bottom: -2px;
+    bottom: 0px;
     left: 50%;
     transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: hsl(var(--gpb-gold));
+    width: 20px;
+    height: 3px;
+    border-radius: 2px 2px 0 0;
+    background: hsl(var(--gpb-blue));
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -160,7 +178,7 @@
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -171,7 +189,7 @@
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.96);
   }
   to {
     opacity: 1;
@@ -181,7 +199,7 @@
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -202,9 +220,11 @@
 
 @media (min-width: 480px) {
   body {
-    background: hsl(213, 40%, 92%);
+    background: hsl(217, 35%, 88%);
   }
   #root {
-    box-shadow: 0 0 60px rgba(0, 42, 92, 0.15);
+    box-shadow:
+      0 0 0 1px rgba(0, 30, 80, 0.06),
+      0 8px 80px rgba(0, 30, 80, 0.18);
   }
 }
