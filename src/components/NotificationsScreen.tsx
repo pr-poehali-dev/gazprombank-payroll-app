@@ -35,35 +35,38 @@ const notifications = [
 ];
 
 const typeColors: Record<string, string> = {
-  salary: 'bg-emerald-50 text-emerald-600',
-  alert: 'bg-amber-50 text-amber-600',
-  tax: 'bg-red-50 text-red-600',
-  info: 'bg-blue-50 text-blue-600',
+  salary: 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600',
+  alert: 'bg-amber-50 dark:bg-amber-900/20 text-amber-600',
+  tax: 'bg-red-50 dark:bg-red-900/20 text-red-500',
+  info: 'bg-blue-50 dark:bg-blue-900/20 text-blue-600',
 };
 
 export default function NotificationsScreen() {
   const [items, setItems] = useState(notifications);
 
   const unread = items.filter(n => !n.read).length;
-
   const markAllRead = () => setItems(items.map(n => ({ ...n, read: true })));
   const markRead = (id: number) => setItems(items.map(n => n.id === id ? { ...n, read: true } : n));
 
   return (
     <div className="flex flex-col min-h-full animate-fade-in">
       {/* Header */}
-      <div className="gpb-gradient px-5 pt-14 pb-6">
-        <div className="flex items-center justify-between">
+      <div className="gpb-gradient px-4 pt-14 pb-8">
+        <div className="flex items-start justify-between">
           <div>
-            <h1 className="text-white text-xl font-bold">Уведомления</h1>
+            <p className="text-white/60 text-xs font-semibold uppercase tracking-widest mb-1">Входящие</p>
+            <h1 className="text-white text-2xl font-bold tracking-tight">Уведомления</h1>
             {unread > 0 && (
-              <p className="text-blue-200 text-sm mt-1">{unread} непрочитанных</p>
+              <div className="flex items-center gap-1.5 mt-2">
+                <div className="w-2 h-2 bg-gpb-gold rounded-full"></div>
+                <p className="text-white/70 text-sm">{unread} непрочитанных</p>
+              </div>
             )}
           </div>
           {unread > 0 && (
             <button
               onClick={markAllRead}
-              className="bg-white/10 text-white text-xs font-medium px-3 py-2 rounded-xl"
+              className="glass-card text-white text-xs font-semibold px-3 py-2 rounded-2xl mt-1"
             >
               Прочитать все
             </button>
@@ -71,14 +74,19 @@ export default function NotificationsScreen() {
         </div>
       </div>
 
-      {/* Alerts first */}
+      {/* Urgent alerts */}
       {items.filter(n => n.urgent && !n.read).length > 0 && (
-        <div className="px-5 mt-4 mb-2">
-          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Требуют внимания</p>
-          {items.filter(n => n.urgent && !n.read).map(n => (
-            <div key={n.id} className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-2">
-              <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+        <div className="px-4 -mt-4 mb-3">
+          <div className="bg-amber-50 dark:bg-amber-900/15 border border-amber-200 dark:border-amber-800/30 rounded-3xl p-4 gpb-card-shadow-md">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-5 h-5 bg-amber-100 dark:bg-amber-800/30 rounded-lg flex items-center justify-center">
+                <Icon name="AlertTriangle" size={12} className="text-amber-600" />
+              </div>
+              <p className="text-xs font-bold text-amber-700 dark:text-amber-500 uppercase tracking-widest">Требуют внимания</p>
+            </div>
+            {items.filter(n => n.urgent && !n.read).map(n => (
+              <div key={n.id} className="flex items-start gap-3">
+                <div className="w-9 h-9 rounded-2xl bg-amber-100 dark:bg-amber-800/30 flex items-center justify-center flex-shrink-0">
                   <Icon name={n.icon} size={16} className="text-amber-600" fallback="AlertCircle" />
                 </div>
                 <div className="flex-1">
@@ -87,31 +95,31 @@ export default function NotificationsScreen() {
                   <p className="text-xs text-muted-foreground mt-1.5">{n.time}</p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
 
       {/* All notifications */}
-      <div className="px-5 mt-2 mb-6">
-        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Все уведомления</p>
-        <div className="bg-card rounded-2xl gpb-card-shadow overflow-hidden">
+      <div className="px-4 mt-1 mb-6">
+        <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 px-1">Все уведомления</p>
+        <div className="bg-card rounded-3xl gpb-card-shadow overflow-hidden">
           {items.map((n, idx) => (
             <button
               key={n.id}
               onClick={() => markRead(n.id)}
-              className={`w-full flex items-start gap-3 px-4 py-4 text-left transition-colors hover:bg-gpb-surface ${idx < items.length - 1 ? 'border-b border-border' : ''} ${!n.read ? 'bg-blue-50/50' : ''}`}
+              className={`w-full flex items-start gap-3 px-4 py-4 text-left transition-colors hover:bg-gpb-surface ${idx < items.length - 1 ? 'border-b border-border' : ''} ${!n.read ? 'bg-gpb-blue/[0.03]' : ''}`}
             >
-              <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${typeColors[n.type] || 'bg-gpb-surface text-gpb-blue'}`}>
-                <Icon name={n.icon} size={16} fallback="Bell" />
+              <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 ${typeColors[n.type] || 'bg-gpb-surface text-gpb-blue'}`}>
+                <Icon name={n.icon} size={17} fallback="Bell" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2">
                   <p className={`text-sm ${!n.read ? 'font-bold text-foreground' : 'font-medium text-foreground'}`}>{n.title}</p>
-                  {!n.read && <div className="w-2 h-2 bg-gpb-blue rounded-full flex-shrink-0 mt-1"></div>}
+                  {!n.read && <div className="w-2 h-2 bg-gpb-blue rounded-full flex-shrink-0 mt-1.5"></div>}
                 </div>
                 <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed line-clamp-2">{n.body}</p>
-                <p className="text-xs text-muted-foreground mt-1.5">{n.time}</p>
+                <p className="text-[11px] text-muted-foreground/70 mt-1.5">{n.time}</p>
               </div>
             </button>
           ))}

@@ -25,11 +25,11 @@ const categoryIcons: Record<string, string> = {
 };
 
 const categoryColors: Record<string, string> = {
-  'Зарплата': 'bg-emerald-50 text-emerald-600',
-  'Аванс': 'bg-blue-50 text-blue-600',
-  'НДФЛ': 'bg-red-50 text-red-600',
-  'ПФР': 'bg-orange-50 text-orange-600',
-  'Удержание': 'bg-red-50 text-red-600',
+  'Зарплата': 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400',
+  'Аванс': 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400',
+  'НДФЛ': 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400',
+  'ПФР': 'bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400',
+  'Удержание': 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400',
 };
 
 export default function HistoryScreen() {
@@ -51,30 +51,41 @@ export default function HistoryScreen() {
   return (
     <div className="flex flex-col min-h-full animate-fade-in">
       {/* Header */}
-      <div className="gpb-gradient px-5 pt-14 pb-6">
-        <h1 className="text-white text-xl font-bold mb-4">История операций</h1>
+      <div className="gpb-gradient px-4 pt-14 pb-10">
+        <p className="text-white/60 text-xs uppercase tracking-widest mb-1">Обзор</p>
+        <h1 className="text-2xl font-bold tracking-tight text-white mb-5">История операций</h1>
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-white/10 rounded-2xl p-3">
-            <p className="text-blue-200 text-xs mb-1">Начислено (март)</p>
-            <p className="text-white font-bold text-lg">{fmt(totalIncome)} ₽</p>
+          <div className="glass-card rounded-2xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-8 h-8 rounded-2xl bg-emerald-400/20 flex items-center justify-center">
+                <Icon name="TrendingUp" size={15} className="text-emerald-300" />
+              </div>
+              <p className="text-white/60 text-xs">Начислено</p>
+            </div>
+            <p className="text-white text-xl font-black tracking-tight">{fmt(totalIncome)} ₽</p>
           </div>
-          <div className="bg-white/10 rounded-2xl p-3">
-            <p className="text-blue-200 text-xs mb-1">Удержано (март)</p>
-            <p className="text-white font-bold text-lg">{fmt(totalDebit)} ₽</p>
+          <div className="glass-card rounded-2xl p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-8 h-8 rounded-2xl bg-red-400/20 flex items-center justify-center">
+                <Icon name="TrendingDown" size={15} className="text-red-300" />
+              </div>
+              <p className="text-white/60 text-xs">Удержано</p>
+            </div>
+            <p className="text-white text-xl font-black tracking-tight">{fmt(totalDebit)} ₽</p>
           </div>
         </div>
       </div>
 
-      {/* Search + Filter */}
-      <div className="px-5 -mt-4 mb-4">
-        <div className="bg-card rounded-2xl gpb-card-shadow p-3">
+      {/* Search + Filter — pulled up */}
+      <div className="px-4 -mt-5 mb-4">
+        <div className="bg-card rounded-3xl gpb-card-shadow-md p-4">
           <div className="relative mb-3">
-            <Icon name="Search" size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <Icon name="Search" size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <input
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               placeholder="Поиск по операциям..."
-              className="w-full pl-9 pr-4 py-2.5 bg-gpb-surface rounded-xl text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-gpb-blue"
+              className="w-full pl-10 pr-4 py-2.5 bg-gpb-surface rounded-2xl text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gpb-blue/40 transition-shadow"
             />
           </div>
           <div className="flex gap-2">
@@ -82,7 +93,11 @@ export default function HistoryScreen() {
               <button
                 key={f}
                 onClick={() => setActiveFilter(idx)}
-                className={`flex-1 py-2 rounded-xl text-xs font-semibold transition-colors ${activeFilter === idx ? 'bg-gpb-blue text-white' : 'bg-gpb-surface text-muted-foreground'}`}
+                className={`flex-1 py-2 rounded-2xl text-xs font-semibold transition-all ${
+                  activeFilter === idx
+                    ? 'bg-gpb-blue text-white shadow-sm'
+                    : 'bg-gpb-surface text-muted-foreground hover:text-foreground'
+                }`}
               >
                 {f}
               </button>
@@ -92,31 +107,48 @@ export default function HistoryScreen() {
       </div>
 
       {/* Transactions list */}
-      <div className="px-5 mb-6">
-        <div className="bg-card rounded-2xl gpb-card-shadow overflow-hidden">
+      <div className="px-4 mb-6">
+        <div className="bg-card rounded-3xl gpb-card-shadow-md overflow-hidden">
           {filtered.length === 0 ? (
-            <div className="py-12 text-center text-muted-foreground">
-              <Icon name="SearchX" size={32} className="mx-auto mb-2 opacity-40" fallback="Search" />
-              <p className="text-sm">Операции не найдены</p>
+            <div className="py-14 text-center text-muted-foreground">
+              <Icon name="SearchX" size={34} className="mx-auto mb-3 opacity-30" fallback="Search" />
+              <p className="text-sm font-medium">Операции не найдены</p>
             </div>
           ) : (
             filtered.map((t, idx) => (
-              <div key={t.id} className={`flex items-center gap-3 px-4 py-3.5 ${idx < filtered.length - 1 ? 'border-b border-border' : ''}`}>
-                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 ${categoryColors[t.category] || 'bg-gpb-surface text-gpb-blue'}`}>
-                  <Icon name={categoryIcons[t.category] || 'CreditCard'} size={16} fallback="CreditCard" />
+              <div
+                key={t.id}
+                className={`flex items-center gap-3 px-4 py-4 ${
+                  idx < filtered.length - 1 ? 'border-b border-border' : ''
+                }`}
+              >
+                <div
+                  className={`w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0 ${
+                    categoryColors[t.category] || 'bg-gpb-surface text-gpb-blue'
+                  }`}
+                >
+                  <Icon name={categoryIcons[t.category] || 'CreditCard'} size={17} fallback="CreditCard" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-foreground truncate">{t.desc}</p>
                   <div className="flex items-center gap-2 mt-0.5">
                     <span className="text-xs text-muted-foreground">{t.date}</span>
-                    {t.employer && <span className="text-xs text-orange-500 bg-orange-50 px-1.5 py-0.5 rounded font-medium">Работодатель</span>}
+                    {t.employer && (
+                      <span className="text-xs text-orange-500 bg-orange-50 dark:bg-orange-900/20 px-1.5 py-0.5 rounded-lg font-medium">
+                        Работодатель
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div className="text-right flex-shrink-0">
                   {t.amount === 0 ? (
                     <span className="text-sm font-semibold text-muted-foreground">—</span>
                   ) : (
-                    <span className={`text-sm font-bold ${t.type === 'income' ? 'text-emerald-600' : 'text-red-500'}`}>
+                    <span
+                      className={`text-sm font-bold ${
+                        t.type === 'income' ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-500 dark:text-red-400'
+                      }`}
+                    >
                       {t.type === 'income' ? '+' : '−'}{fmt(t.amount)} ₽
                     </span>
                   )}

@@ -106,23 +106,23 @@ export default function AiAssistantScreen() {
   return (
     <div className="flex flex-col h-full animate-fade-in">
       {/* Header */}
-      <div className="gpb-gradient px-5 pt-14 pb-5 flex-shrink-0">
+      <div className="gpb-gradient px-4 pt-14 pb-5 flex-shrink-0">
         <div className="flex items-center gap-3">
           <div className="relative">
-            <div className="w-12 h-12 rounded-2xl bg-white/15 border border-white/20 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl glass-card flex items-center justify-center">
               <Icon name="Bot" size={22} className="text-white" fallback="MessageCircle" />
             </div>
-            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full border-2 border-gpb-blue"></div>
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-400 rounded-full border-2 border-white/30"></div>
           </div>
           <div>
-            <p className="text-white font-bold text-base">ГПБ Ассистент</p>
-            <p className="text-emerald-300 text-xs font-medium flex items-center gap-1">
+            <p className="text-white font-bold text-lg tracking-tight">ГПБ Ассистент</p>
+            <p className="text-emerald-300 text-xs font-semibold flex items-center gap-1.5 mt-0.5">
               <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full inline-block"></span>
               Онлайн · отвечает мгновенно
             </p>
           </div>
-          <div className="ml-auto bg-white/10 rounded-xl px-3 py-1.5">
-            <p className="text-white/80 text-[10px] font-semibold uppercase tracking-wide">ИИ</p>
+          <div className="ml-auto glass-card rounded-2xl px-3 py-1.5">
+            <p className="text-white/80 text-[10px] font-bold uppercase tracking-widest">ИИ</p>
           </div>
         </div>
       </div>
@@ -143,8 +143,8 @@ export default function AiAssistantScreen() {
               <div
                 className={`px-4 py-3 rounded-2xl text-sm leading-relaxed whitespace-pre-line ${
                   msg.role === 'user'
-                    ? 'bg-gpb-blue text-white rounded-tr-sm'
-                    : 'bg-card gpb-card-shadow text-foreground rounded-tl-sm'
+                    ? 'bg-gpb-blue text-white rounded-tr-md'
+                    : 'bg-card gpb-card-shadow text-foreground rounded-tl-md'
                 }`}
               >
                 {msg.role === 'assistant' ? renderText(msg.text) : msg.text}
@@ -179,7 +179,7 @@ export default function AiAssistantScreen() {
               <button
                 key={q}
                 onClick={() => sendMessage(q)}
-                className="bg-card border border-border rounded-full px-3 py-1.5 text-xs font-medium text-foreground hover:border-gpb-blue hover:text-gpb-blue transition-colors gpb-card-shadow"
+                className="bg-card border border-border rounded-2xl px-3 py-2 text-xs font-semibold text-foreground hover:border-gpb-blue hover:text-gpb-blue transition-colors gpb-card-shadow"
               >
                 {q}
               </button>
@@ -189,7 +189,7 @@ export default function AiAssistantScreen() {
       )}
 
       {/* Input */}
-      <div className="px-4 py-3 bg-card border-t border-border flex-shrink-0">
+      <div className="px-4 py-3 bg-card/95 backdrop-blur-xl border-t border-border flex-shrink-0">
         <div className="flex items-center gap-2">
           <input
             ref={inputRef}
@@ -197,12 +197,12 @@ export default function AiAssistantScreen() {
             onChange={e => setInput(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && sendMessage(input)}
             placeholder="Задайте вопрос..."
-            className="flex-1 bg-gpb-surface rounded-2xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-gpb-blue"
+            className="flex-1 bg-gpb-surface rounded-2xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-gpb-blue/40"
           />
           <button
             onClick={() => sendMessage(input)}
             disabled={!input.trim() || isTyping}
-            className="w-11 h-11 bg-gpb-blue rounded-2xl flex items-center justify-center disabled:opacity-40 transition-opacity flex-shrink-0"
+            className="w-11 h-11 bg-gpb-blue rounded-2xl flex items-center justify-center disabled:opacity-40 transition-all active:scale-95 flex-shrink-0"
           >
             <Icon name="Send" size={17} className="text-white" />
           </button>

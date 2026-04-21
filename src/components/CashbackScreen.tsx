@@ -88,35 +88,38 @@ export default function CashbackScreen() {
   return (
     <div className="flex flex-col min-h-full animate-fade-in">
       {/* Header */}
-      <div className="gpb-gradient px-5 pt-14 pb-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-white/5 -translate-y-16 translate-x-16" />
-        <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-white/5 translate-y-12 -translate-x-8" />
+      <div className="gpb-gradient px-4 pt-14 pb-10 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-white/[0.04] -translate-y-16 translate-x-16" />
+        <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-white/[0.04] translate-y-12 -translate-x-8" />
 
         <div className="relative">
-          <h1 className="text-white text-xl font-bold mb-1">Кэшбэк</h1>
-          <p className="text-blue-200 text-sm mb-5">Апрель 2026</p>
+          <p className="text-white/60 text-xs font-semibold uppercase tracking-widest mb-1">Апрель 2026</p>
+          <h1 className="text-white text-2xl font-bold tracking-tight mb-5">Кэшбэк</h1>
 
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-white/12 backdrop-blur rounded-2xl p-4 border border-white/10">
-              <p className="text-blue-200 text-xs mb-1">Начислено</p>
-              <p className="text-white text-2xl font-bold">{totalEarned} <span className="text-base">₽</span></p>
-              <p className="text-emerald-300 text-xs mt-1 flex items-center gap-1">
-                <Icon name="TrendingUp" size={11} className="text-emerald-300" />
-                +18% к марту
-              </p>
+            <div className="glass-card rounded-2xl p-4">
+              <div className="flex items-center gap-1.5 mb-2">
+                <Icon name="TrendingUp" size={13} className="text-emerald-300" />
+                <p className="text-white/60 text-xs font-semibold">Начислено</p>
+              </div>
+              <p className="text-white text-2xl font-black">{totalEarned} <span className="text-base font-semibold opacity-70">₽</span></p>
+              <p className="text-emerald-300 text-xs mt-1.5 font-semibold">+18% к марту</p>
             </div>
             <div className="bg-gpb-gold/20 border border-gpb-gold/30 rounded-2xl p-4">
-              <p className="text-gpb-gold-light text-xs mb-1">Ожидается</p>
-              <p className="text-white text-2xl font-bold">{pendingCashback} <span className="text-base">₽</span></p>
-              <p className="text-blue-200 text-xs mt-1">Зачислится 1 мая</p>
+              <div className="flex items-center gap-1.5 mb-2">
+                <Icon name="Clock" size={13} className="text-gpb-gold" />
+                <p className="text-gpb-gold text-xs font-semibold">Ожидается</p>
+              </div>
+              <p className="text-white text-2xl font-black">{pendingCashback} <span className="text-base font-semibold opacity-70">₽</span></p>
+              <p className="text-white/50 text-xs mt-1.5">Зачислится 1 мая</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Free categories */}
-      <div className="px-5 -mt-4 mb-5">
-        <div className="bg-card rounded-2xl gpb-card-shadow p-4">
+      <div className="px-4 -mt-5 mb-3">
+        <div className="bg-card rounded-3xl gpb-card-shadow-md p-4">
           <div className="flex items-center justify-between mb-1">
             <p className="text-sm font-bold text-foreground">Бесплатные категории</p>
             <span className="text-xs font-semibold text-muted-foreground bg-gpb-surface px-2 py-0.5 rounded-full">
@@ -169,7 +172,7 @@ export default function CashbackScreen() {
       </div>
 
       {/* Subscriptions */}
-      <div className="px-5 mb-6">
+      <div className="px-4 mb-3">
         <div className="flex items-center justify-between mb-3">
           <p className="text-sm font-bold text-foreground">Подписки</p>
           <span className="text-xs text-muted-foreground">Расширенный кэшбэк</span>
@@ -183,7 +186,7 @@ export default function CashbackScreen() {
             return (
               <div
                 key={plan.id}
-                className={`bg-card rounded-2xl gpb-card-shadow overflow-hidden border-2 transition-all ${isActive ? 'border-gpb-blue' : 'border-transparent'}`}
+                className={`bg-card rounded-3xl gpb-card-shadow overflow-hidden border-2 transition-all ${isActive ? 'border-gpb-blue' : 'border-transparent'}`}
               >
                 {/* Plan header */}
                 <button
@@ -262,8 +265,8 @@ export default function CashbackScreen() {
       </div>
 
       {/* Bottom hint */}
-      <div className="px-5 mb-6">
-        <div className="bg-gpb-surface rounded-2xl p-4 flex items-start gap-3">
+      <div className="px-4 mb-6">
+        <div className="bg-gpb-surface rounded-3xl p-4 flex items-start gap-3">
           <Icon name="Info" size={16} className="text-muted-foreground flex-shrink-0 mt-0.5" />
           <p className="text-xs text-muted-foreground leading-relaxed">
             Кэшбэк начисляется бонусными рублями 1-го числа следующего месяца. Максимальный кэшбэк по подписке суммируется с базовыми категориями.

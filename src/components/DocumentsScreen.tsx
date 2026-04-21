@@ -32,6 +32,12 @@ const documents = [
   },
 ];
 
+const categoryColors = [
+  'bg-blue-50 dark:bg-blue-900/20 text-gpb-blue',
+  'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600',
+  'bg-violet-50 dark:bg-violet-900/20 text-violet-600',
+];
+
 export default function DocumentsScreen() {
   const [downloading, setDownloading] = useState<string | null>(null);
   const [downloaded, setDownloaded] = useState<Set<string>>(new Set());
@@ -46,56 +52,57 @@ export default function DocumentsScreen() {
 
   return (
     <div className="flex flex-col min-h-full animate-fade-in">
-      <div className="gpb-gradient px-5 pt-14 pb-8">
-        <h1 className="text-white text-xl font-bold mb-1">Документы</h1>
-        <p className="text-blue-200 text-sm">Справки, расчётные листки и договоры</p>
+      <div className="gpb-gradient px-4 pt-14 pb-10">
+        <p className="text-white/60 text-xs font-semibold uppercase tracking-widest mb-1">Архив</p>
+        <h1 className="text-white text-2xl font-bold tracking-tight mb-0.5">Документы</h1>
+        <p className="text-white/60 text-sm">Справки, расчётные листки и договоры</p>
       </div>
 
-      <div className="px-5 -mt-4 pb-8 flex flex-col gap-4">
+      <div className="px-4 -mt-5 pb-8 flex flex-col gap-3">
         {/* Request new document */}
-        <div className="bg-card rounded-2xl gpb-card-shadow p-4 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gpb-surface flex items-center justify-center flex-shrink-0">
+        <div className="bg-card rounded-3xl gpb-card-shadow-md p-4 flex items-center gap-3">
+          <div className="w-11 h-11 rounded-2xl bg-gpb-blue/10 flex items-center justify-center flex-shrink-0">
             <Icon name="FilePlus" size={20} className="text-gpb-blue" />
           </div>
           <div className="flex-1">
-            <p className="text-sm font-semibold text-foreground">Заказать справку</p>
-            <p className="text-xs text-muted-foreground">Любой документ готов за 3 рабочих дня</p>
+            <p className="text-sm font-bold text-foreground">Заказать справку</p>
+            <p className="text-xs text-muted-foreground mt-0.5">Любой документ готов за 3 рабочих дня</p>
           </div>
-          <button className="bg-gpb-blue text-white text-xs font-semibold px-3 py-1.5 rounded-lg">
+          <button className="bg-gpb-blue text-white text-xs font-bold px-3 py-2 rounded-2xl">
             Заказать
           </button>
         </div>
 
-        {documents.map(group => (
+        {documents.map((group, gi) => (
           <div key={group.id}>
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 px-1">{group.category}</p>
-            <div className="bg-card rounded-2xl gpb-card-shadow overflow-hidden">
+            <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2 px-1">{group.category}</p>
+            <div className="bg-card rounded-3xl gpb-card-shadow overflow-hidden">
               {group.items.map((doc, idx) => (
                 <div
                   key={doc.id}
                   className={`flex items-center gap-3 px-4 py-3.5 ${idx < group.items.length - 1 ? 'border-b border-border' : ''}`}
                 >
-                  <div className="w-10 h-10 rounded-xl bg-gpb-surface flex items-center justify-center flex-shrink-0">
-                    <Icon name={doc.icon} size={18} className="text-gpb-blue" fallback="FileText" />
+                  <div className={`w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0 ${categoryColors[gi]}`}>
+                    <Icon name={doc.icon} size={17} fallback="FileText" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-foreground truncate">{doc.title}</p>
-                    <p className="text-xs text-muted-foreground">{doc.sub} · {doc.size}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{doc.sub} · {doc.size}</p>
                   </div>
                   <button
                     onClick={() => handleDownload(doc.id)}
-                    className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all flex-shrink-0 ${
+                    className={`w-9 h-9 rounded-2xl flex items-center justify-center transition-all flex-shrink-0 ${
                       downloaded.has(doc.id)
-                        ? 'bg-emerald-50'
-                        : 'bg-gpb-surface hover:bg-gpb-blue hover:text-white'
+                        ? 'bg-emerald-50 dark:bg-emerald-900/20'
+                        : 'bg-gpb-surface hover:bg-gpb-blue/10'
                     }`}
                   >
                     {downloading === doc.id ? (
-                      <Icon name="Loader" size={16} className="text-gpb-blue animate-spin" />
+                      <Icon name="Loader" size={15} className="text-gpb-blue animate-spin" />
                     ) : downloaded.has(doc.id) ? (
-                      <Icon name="Check" size={16} className="text-emerald-600" />
+                      <Icon name="Check" size={15} className="text-emerald-600" />
                     ) : (
-                      <Icon name="Download" size={16} className="text-gpb-blue" />
+                      <Icon name="Download" size={15} className="text-gpb-blue" />
                     )}
                   </button>
                 </div>

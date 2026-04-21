@@ -50,49 +50,49 @@ export default function PinScreen({ onSuccess }: Props) {
       {/* Top */}
       <div className="flex-1 flex flex-col items-center justify-center px-8 pt-16">
         {/* Logo */}
-        <div className="w-16 h-16 rounded-3xl bg-gpb-blue flex items-center justify-center mb-6 gpb-card-shadow">
-          <span className="text-white text-xl font-black tracking-tight">ГПБ</span>
+        <div className="w-20 h-20 rounded-3xl gpb-gradient flex items-center justify-center mb-7 gpb-card-shadow-md">
+          <span className="text-white text-2xl font-black tracking-tight">ГПБ</span>
         </div>
-        <h1 className="text-xl font-bold text-foreground mb-1">Добро пожаловать</h1>
+        <h1 className="text-2xl font-bold text-foreground tracking-tight mb-1">Добро пожаловать</h1>
         <p className="text-muted-foreground text-sm mb-10">Артур Арменович</p>
 
         {/* Dots */}
         <div
-          className={`flex items-center gap-4 mb-3 transition-transform ${shake ? 'animate-[shake_0.5s_ease]' : ''}`}
+          className={`flex items-center gap-5 mb-3 ${shake ? 'animate-[shake_0.5s_ease]' : ''}`}
           style={shake ? { animation: 'shake 0.5s ease' } : {}}
         >
           {[0, 1, 2, 3].map(i => (
             <div
               key={i}
-              className={`w-4 h-4 rounded-full border-2 transition-all duration-200 ${
+              className={`w-4 h-4 rounded-full transition-all duration-200 ${
                 i < pin.length
-                  ? 'bg-gpb-blue border-gpb-blue scale-110'
-                  : 'bg-transparent border-border'
+                  ? 'bg-gpb-blue scale-110 shadow-[0_0_10px_rgba(30,100,220,0.4)]'
+                  : 'bg-transparent border-2 border-border'
               }`}
             />
           ))}
         </div>
 
         {error ? (
-          <p className="text-red-500 text-xs font-medium animate-fade-in">{error}</p>
+          <p className="text-red-500 text-xs font-semibold animate-fade-in mt-1">{error}</p>
         ) : (
-          <p className="text-muted-foreground text-xs">Введите PIN-код</p>
+          <p className="text-muted-foreground text-xs mt-1">Введите PIN-код</p>
         )}
 
         {attempts >= 3 && !error && (
-          <button className="mt-3 text-gpb-blue text-xs font-semibold">
-            Забыли PIN? Войти по биометрии
+          <button className="mt-4 flex items-center gap-1.5 text-gpb-blue text-xs font-semibold bg-gpb-surface px-3 py-2 rounded-xl">
+            <Icon name="Fingerprint" size={14} />
+            Войти по биометрии
           </button>
         )}
       </div>
 
       {/* Keypad */}
-      <div className="w-full px-10 pb-12">
-        {/* Biometric hint */}
-        <div className="flex justify-center mb-4">
-          <button className="flex items-center gap-1.5 text-muted-foreground">
+      <div className="w-full px-8 pb-14">
+        <div className="flex justify-center mb-5">
+          <button className="flex items-center gap-2 text-muted-foreground bg-gpb-surface px-4 py-2 rounded-2xl">
             <Icon name="Fingerprint" size={18} className="text-gpb-blue" fallback="Shield" />
-            <span className="text-xs text-gpb-blue font-medium">Войти по биометрии</span>
+            <span className="text-xs text-gpb-blue font-semibold">Войти по биометрии</span>
           </button>
         </div>
 
@@ -106,10 +106,10 @@ export default function PinScreen({ onSuccess }: Props) {
                     key={ki}
                     onClick={() => press(key)}
                     className={`
-                      h-16 rounded-2xl text-xl font-semibold transition-all active:scale-95
+                      h-16 rounded-3xl text-xl font-bold transition-all active:scale-95
                       ${key === 'del'
-                        ? 'flex items-center justify-center text-muted-foreground bg-transparent'
-                        : 'bg-white gpb-card-shadow text-foreground hover:bg-gpb-surface'
+                        ? 'flex items-center justify-center text-muted-foreground'
+                        : 'bg-card gpb-card-shadow text-foreground hover:bg-gpb-surface'
                       }
                     `}
                   >
@@ -124,7 +124,7 @@ export default function PinScreen({ onSuccess }: Props) {
           ))}
         </div>
 
-        <p className="text-center text-xs text-muted-foreground mt-6">
+        <p className="text-center text-xs text-muted-foreground mt-6 opacity-60">
           Подсказка: PIN-код <span className="font-mono font-bold tracking-widest">1234</span>
         </p>
       </div>
